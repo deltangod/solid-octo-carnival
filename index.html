@@ -96,12 +96,13 @@
   <aside class="drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
     <div class="drawer-head"><div><p class="eyebrow">YOUR PICKS</p><h2>Your bag <span id="drawerCount">(0)</span></h2></div><button class="close-button" data-close aria-label="Close">×</button></div>
     <div id="cartItems" class="cart-items"></div>
-    <div class="cart-bottom"><div class="subtotal"><span>Subtotal</span><strong id="cartSubtotal">₦0</strong></div><p>Shipping is calculated at checkout based on your destination.</p><button class="button button-dark full-width" id="checkoutButton">Continue to checkout ↗</button><small>Secure payment setup required before accepting real payments.</small></div>
+    <div class="cart-bottom"><div class="subtotal"><span>Subtotal</span><strong id="cartSubtotal">₦0</strong></div><p>Shipping is calculated at checkout based on your destination.</p><button class="button button-dark full-width" id="checkoutButton">Continue to checkout ↗</button><button class="text-link" id="lastOrderLink" type="button" hidden></button><small>Pay by bank transfer, then send proof on WhatsApp.</small></div>
   </aside>
 
   <div class="modal-wrap" id="accountModal" role="dialog" aria-modal="true" aria-labelledby="accountTitle">
     <div class="modal"><button class="close-button modal-close" data-close aria-label="Close">×</button><p class="eyebrow">YOUR LITTLE CORNER</p><h2 id="accountTitle">Welcome, <em>baddie.</em></h2><p class="muted">Sign in to keep your orders and details together.</p>
-      <form id="accountForm" class="form-stack"><label>Email address<input id="accountEmail" type="email" placeholder="you@example.com" required></label><label>Password<input id="accountPassword" type="password" minlength="6" placeholder="At least 6 characters" required></label><button class="button button-dark full-width" type="submit">Sign in / create account</button><p class="form-note" id="accountMessage">Demo mode is active until Supabase is configured.</p></form>
+      <form id="accountForm" class="form-stack"><label>Email address<input id="accountEmail" type="email" placeholder="you@example.com" required></label><label>Password<input id="accountPassword" type="password" minlength="6" placeholder="At least 6 characters" required></label><button class="button button-dark full-width" type="submit">Sign in / create account</button><p class="form-note" id="accountMessage"></p></form>
+      <div id="signedInBox" hidden><p class="muted">Signed in as <strong id="signedInEmail"></strong></p><button class="button button-dark full-width" id="signOutButton" type="button">Sign out</button></div>
     </div>
   </div>
 
@@ -120,8 +121,8 @@
   </div>
 
   <div class="modal-wrap" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
-    <div class="modal modal-wide"><button class="close-button modal-close" data-close aria-label="Close">×</button><p class="eyebrow">ALMOST YOURS</p><h2 id="checkoutTitle">Checkout <em>details.</em></h2>
-      <form id="checkoutForm" class="form-stack"><div class="form-two"><label>Full name<input name="name" required></label><label>Email<input name="email" type="email" required></label></div><label>Shipping address<input name="address" required placeholder="Street address, city"></label><div class="form-two"><label>Country<input name="country" required value="Nigeria"></label><label>Phone number<input name="phone" required placeholder="+234..."></label></div><label>Delivery notes (optional)<textarea name="notes" rows="2"></textarea></label><div class="checkout-total"><span>Order subtotal</span><strong id="checkoutTotal">₦0</strong></div><button class="button button-dark full-width" type="submit">Place order / continue to payment ↗</button><p class="form-note" id="checkoutMessage">Demo checkout: real payment is disabled until a payment provider is configured.</p></form>
+    <div class="modal modal-wide"><button class="close-button modal-close" data-close aria-label="Close">×</button><div id="checkoutHead"><p class="eyebrow">ALMOST YOURS</p><h2 id="checkoutTitle">Checkout <em>details.</em></h2></div><div id="paymentInstructions" hidden></div>
+      <form id="checkoutForm" class="form-stack"><div class="form-two"><label>Full name<input name="name" required></label><label>Email<input name="email" type="email" required></label></div><label>Shipping address<input name="address" required placeholder="Street address, city"></label><div class="form-two"><label>Country<input name="country" required value="Nigeria"></label><label>Phone number<input name="phone" required placeholder="+234..."></label></div><label>Delivery notes (optional)<textarea name="notes" rows="2"></textarea></label><div class="checkout-total"><span>Order subtotal</span><strong id="checkoutTotal">₦0</strong></div><button class="button button-dark full-width" type="submit">Place order ↗</button><p class="form-note" id="checkoutMessage">Next you'll see our account details to pay by bank transfer.</p></form>
     </div>
   </div>
 
