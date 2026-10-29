@@ -1,0 +1,67 @@
+// POST /.netlify/functions/create-order
+const { json, configured, sb, getUserId, clean, isEmail, isUuid, crypto } = require("../lib/common");
+// Browser sends ONLY product ids, sizes and quantities. Prices come from the database.
+// Payment is by bank transfer: the order is saved as pending_payment and the admin marks it paid.
+const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // no look-alike characters
+const makeRef = () => "AB-" + Array.from(crypto.randomBytes(6), b => ALPHABET[b % ALPHABET.length]).join("");
+
+exports.handler = async (event) => {
+  if (event.httpMethod !== "POST") return json(405, { error: "Method not allowed" });
+  if (!configured()) return json(503, { error: "Checkout is not configured yet." });
+
+  let input;
+  try { input = JSON.parse(event.body || "{}"); } catch { return json(400, { error: "Invalid request." }); }
+
+  const customer = {
+    name: clean(input.name, 120), email: clean(input.email, 254).toLowerCase(),
+    phone: clean(input.phone, 40), address: clean(input.address, 400),
+    country: clean(input.country, 80), notes: clean(input.notes, 600)
+  };
+  if (!customer.name || !isEmail(customer.email) || !customer.phone || !customer.address || !customer.country) {
+    return json(400, { error: "Please complete all required checkout fields." });
+  }
+
+  const requested = Array.isArray(input.items) ? input.items.slice(0, 30) : [];
+  if (!requested.length) return json(400, { error: "Your bag is empty." });
+  for (const it of requested) {
+    if (!isUuid(String(it.id)) || !Number.isInteger(it.qty) || it.qty < 1 || it.qty > 10) {
+      return json(400, { error: "Your bag has an invalid item. Please refresh and try again." });
+    }
+  }
+
+  try {
+    const ids = [...new Set(requested.map(i => i.id))];
+    const products = await sb(`products?id=in.(${ids.join(",")})&active=eq.true&select=id,name,price_ngn,sizes`);
+    const byId = new Map(products.map(p => [p.id, p]));
+
+    const lines = [];
+    let total = 0;
+    for (const it of requested) {
+      const p = byId.get(it.id);
+      if (!p) return json(400, { error: "One of the items is no longer available. Please refresh your bag." });
+      if (!p.sizes.includes(it.size)) return json(400, { error: `Size ${clean(it.size, 10)} isn't available for ${p.name}.` });
+      lines.push({ product_id: p.id, name: p.name, size: it.size, qty: it.qty, unit_price: p.price_ngn });
+      total += p.price_ngn * it.qty;
+    }
+
+    const userId = await getUserId(event);
+    let order, reference;
+    for (let attempt = 0; attempt < 3 && !order; attempt++) {
+      reference = makeRef();
+      try {
+        [order] = await sb("orders", {
+          method: "POST", prefer: "return=representation",
+          body: {
+            user_id: userId, customer_name: customer.name, email: customer.email, phone: customer.phone,
+            shipping_address: customer.address, country: customer.country, notes: customer.notes || null,
+            items: lines, total_amount: total, currency: "NGN", status: "pending_payment", payment_reference: reference
+          }
+        });
+      } catch (e) { if (attempt === 2) throw e; } // retry on the rare reference collision
+    }
+    return json(200, { reference, total, name: customer.name });
+  } catch (err) {
+    console.error("create-order failed", err.message, err.detail);
+    return json(500, { error: "Something went wrong creating your order." });
+  }
+};
