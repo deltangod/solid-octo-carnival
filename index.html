@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff8f7" />
+  <meta name="description" content="Ankara Baddies makes statement Ankara fashion for women, with worldwide shipping and custom-made designs." />
+  <title>Ankara Baddies | Wear Your Bold</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="announcement">MADE IN NIGERIA, WORN EVERYWHERE ✦ WORLDWIDE SHIPPING AVAILABLE</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Ankara Baddies home">
+      <span class="brand-mark">AB</span><span class="brand-name">ANKARA <i>BADDIES</i></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#shop">Shop</a><a href="#custom">Custom orders</a><a href="#story">Our story</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="accountButton" aria-label="Account">♙ <span>Account</span></button>
+      <button class="icon-button cart-trigger" id="cartButton" aria-label="Shopping bag">♡ <span>Bag</span><b id="cartCount">0</b></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> AFRICAN PRINT. MAIN CHARACTER ENERGY.</p>
+        <h1>Wear your<br><em>bold.</em></h1>
+        <p class="hero-description">Ankara pieces made for women who take up space beautifully. Find your fit, choose your print, and let the outfit do the talking.</p>
+        <div class="hero-buttons"><a class="button button-dark" href="#shop">Shop the collection <span>↗</span></a><a class="text-link" href="#custom">Dream it. We'll make it. →</a></div>
+        <div class="hero-proof"><div class="proof-avatars"><span>✿</span><span>✦</span><span>♡</span></div><p><strong>Made with intention.</strong><br>Designed and crafted in Nigeria.</p></div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-image image-placeholder"><span class="placeholder-symbol">✿</span><p>YOUR CAMPAIGN PHOTO</p><small>Replace with your Ankara lookbook image</small></div>
+        <div class="floating-note"><span>✦</span><div><strong>Culture, cut beautifully.</strong><small>Every print has a story.</small></div></div>
+        <div class="hero-sticker">PRINT<br>YOUR<br>POWER <span>✳</span></div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Brand promise"><div>AFRICAN PRINT, ALWAYS <span>✳</span> MADE IN NIGERIA <span>✳</span> SHIPPING WORLDWIDE <span>✳</span> MADE TO MAKE YOU FEEL SOMETHING <span>✳</span></div></section>
+
+    <section class="shop-section section-wrap" id="shop">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE CURRENT OBSESSION</p><h2>Shop the <em>looks.</em></h2><p class="muted">Ready-to-wear Ankara, made to turn an ordinary day into a moment.</p></div>
+        <a class="text-link desktop-link" href="#shop">Explore all styles ↓</a>
+      </div>
+      <div class="shop-controls">
+        <div class="filter-pills" id="categoryFilters">
+          <button class="filter-pill active" data-category="All">All pieces</button>
+          <button class="filter-pill" data-category="Dresses">Dresses</button>
+          <button class="filter-pill" data-category="Sets">Two-piece sets</button>
+          <button class="filter-pill" data-category="Tops">Tops</button>
+        </div>
+        <label class="sort-label">Sort <select id="sortSelect"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></label>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-products" id="emptyProducts" hidden>No styles in this category yet. The atelier is getting dressed. ✨</div>
+    </section>
+
+    <section class="custom-section" id="custom">
+      <div class="custom-photo image-placeholder"><span class="placeholder-symbol">✿</span><p>YOUR CUSTOM DESIGN PHOTO</p><small>Add a photo of your bespoke work here</small></div>
+      <div class="custom-copy">
+        <p class="eyebrow">MADE JUST FOR YOU</p>
+        <h2>Your vision.<br><em>Your measurements.</em></h2>
+        <p>Have a design saved in your camera roll? Tell us what you're imagining, share your measurements, and we'll help bring your Ankara dream to life.</p>
+        <ul class="custom-points"><li><span>01</span> Tell us about your design</li><li><span>02</span> Share your measurements</li><li><span>03</span> Review your quote and pay securely</li></ul>
+        <button class="button button-dark" id="customOrderButton">Start a custom order <span>↗</span></button>
+      </div>
+    </section>
+
+    <section class="values-section section-wrap" id="story">
+      <div class="section-heading centered"><p class="eyebrow">THE ANKARA BADDIES WAY</p><h2>Culture, with a <em>little extra.</em></h2></div>
+      <div class="values-grid">
+        <article><span class="value-icon">✿</span><h3>Rooted in culture</h3><p>Vibrant Ankara prints, thoughtfully turned into pieces that feel like you.</p></article>
+        <article><span class="value-icon">♡</span><h3>Made for your shape</h3><p>Choose your size in ready-to-wear or request a custom fit made around your measurements.</p></article>
+        <article><span class="value-icon">✈</span><h3>From Nigeria to you</h3><p>Based in Nigeria and ready to send your new favourite outfit around the world.</p></article>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div><p class="eyebrow">LET'S KEEP IN TOUCH</p><h2>A little print in your inbox.</h2><p>New drops, styling notes, and first dibs. No inbox drama.</p></div>
+      <form id="newsletterForm"><input type="email" id="newsletterEmail" placeholder="Your email address" required aria-label="Email address"><button class="button button-dark" type="submit">Count me in ↗</button></form>
+      <p class="newsletter-message" id="newsletterMessage" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand" href="#"><span class="brand-mark">AB</span><span class="brand-name">ANKARA <i>BADDIES</i></span></a><p>Made in Nigeria. Styled by you. ✿</p><div><a href="#shop">Shop</a><a href="#custom">Custom orders</a><a href="mailto:hello@ankar baddies.com">Contact</a></div><small>© <span id="year"></span> Ankara Baddies. All the good stuff reserved.</small></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
+    <div class="drawer-head"><div><p class="eyebrow">YOUR PICKS</p><h2>Your bag <span id="drawerCount">(0)</span></h2></div><button class="close-button" data-close aria-label="Close">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-bottom"><div class="subtotal"><span>Subtotal</span><strong id="cartSubtotal">₦0</strong></div><p>Shipping is calculated at checkout based on your destination.</p><button class="button button-dark full-width" id="checkoutButton">Continue to checkout ↗</button><button class="text-link" id="lastOrderLink" type="button" hidden></button><small>Pay by bank transfer, then send proof on WhatsApp.</small></div>
+  </aside>
+
+  <div class="modal-wrap" id="accountModal" role="dialog" aria-modal="true" aria-labelledby="accountTitle">
+    <div class="modal"><button class="close-button modal-close" data-close aria-label="Close">×</button><p class="eyebrow">YOUR LITTLE CORNER</p><h2 id="accountTitle">Welcome, <em>baddie.</em></h2><p class="muted">Sign in to keep your orders and details together.</p>
+      <form id="accountForm" class="form-stack"><label>Email address<input id="accountEmail" type="email" placeholder="you@example.com" required></label><label>Password<input id="accountPassword" type="password" minlength="6" placeholder="At least 6 characters" required></label><button class="button button-dark full-width" type="submit">Sign in / create account</button><p class="form-note" id="accountMessage">Demo mode is active until Supabase is configured.</p></form>
+      <div id="signedInBox" hidden><p class="muted">Signed in as <strong id="signedInEmail"></strong></p><button class="button button-dark full-width" id="signOutButton" type="button">Sign out</button></div>
+    </div>
+  </div>
+
+  <div class="modal-wrap" id="customModal" role="dialog" aria-modal="true" aria-labelledby="customTitle">
+    <div class="modal modal-wide"><button class="close-button modal-close" data-close aria-label="Close">×</button><p class="eyebrow">LET'S MAKE SOMETHING BEAUTIFUL</p><h2 id="customTitle">Your custom <em>order.</em></h2><p class="muted">Tell us the idea. We'll confirm the quote before payment.</p>
+      <form id="customForm" class="form-stack">
+        <div class="form-two"><label>Full name<input name="name" required placeholder="Your name"></label><label>Email address<input name="email" type="email" required placeholder="you@example.com"></label></div>
+        <div class="form-two"><label>What are we making?<select name="garment" required><option value="">Choose a style</option><option>Dress</option><option>Two-piece set</option><option>Top or blouse</option><option>Skirt or trousers</option><option>Jumpsuit</option><option>Other</option></select></label><label>Preferred size<select name="size" required><option value="">Choose size</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option><option>Custom measurements</option></select></label></div>
+        <label>Measurements / fit notes<textarea name="measurements" rows="3" placeholder="Bust, waist, hips, height, fit preference..."></textarea></label>
+        <label>Describe your design<textarea name="description" rows="4" required placeholder="Colour, print, neckline, sleeves, occasion, inspiration..."></textarea></label>
+        <label>Reference image URL (optional)<input name="reference_url" type="url" placeholder="Paste a link to your inspiration image"></label>
+        <label>Shipping destination<input name="destination" required placeholder="City, country"></label>
+        <button class="button button-dark full-width" type="submit">Submit custom request ↗</button><p class="form-note" id="customMessage">We'll confirm the final price and production timeline before you pay.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-wrap" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="modal modal-wide"><button class="close-button modal-close" data-close aria-label="Close">×</button><div id="checkoutHead"><p class="eyebrow">ALMOST YOURS</p><h2 id="checkoutTitle">Checkout <em>details.</em></h2></div><div id="paymentInstructions" hidden></div>
+      <form id="checkoutForm" class="form-stack"><div class="form-two"><label>Full name<input name="name" required></label><label>Email<input name="email" type="email" required></label></div><label>Shipping address<input name="address" required placeholder="Street address, city"></label><div class="form-two"><label>Country<input name="country" required value="Nigeria"></label><label>Phone number<input name="phone" required placeholder="+234..."></label></div><label>Delivery notes (optional)<textarea name="notes" rows="2"></textarea></label><div class="checkout-total"><span>Order subtotal</span><strong id="checkoutTotal">₦0</strong></div><button class="button button-dark full-width" type="submit">Place order ↗</button><p class="form-note" id="checkoutMessage">Next you'll see our account details to pay by bank transfer.</p></form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4"></script>
+  <script src="app.js"></script>
+</body>
+</html>
